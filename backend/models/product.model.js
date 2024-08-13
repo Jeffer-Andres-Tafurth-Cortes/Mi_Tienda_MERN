@@ -10,7 +10,6 @@ const productSchema = new mongoose.Schema({
   {
     timestamps: true,    // createdAt, updatedAt
   }
-  
 );
 
 // Definimos la variable que va a contener el modelo de la coleccion de los productos
