@@ -29,5 +29,38 @@ export const useProductStore = create((set) => ({
     const response = await fetch('/api/products')
     const data = await response.json()
     set({ products: data.data })
+  },
+
+  deleteProduct: async (pid) => {
+    const response = await fetch(`/api/products/${pid}`, {
+      method: 'DELETE'
+    })
+    const data = await response.json()
+    if(!data.success){
+      return {success: false, message: data.message}
+    }
+
+    set((state) => ({ products: state.products.filter(product => product._id !== pid) }))
+    return { success: true, message: 'Producto eliminado correctamente' }
+  },
+
+  updateProduct: async (pid, updatedProduct) => {
+    const response = await fetch(`/api/products/${pid}`, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedProduct)
+    })
+
+    const data = await response.json()
+    if(!data.success) return {success: false, message: data.message}
+
+    set((state) => ({
+      products: state.products.map(product => product._id === pid ? data.data : product)
+    }))
+
+    return { success: true, message: 'Producto actualizado correctamente' }
+    
   }
 }))

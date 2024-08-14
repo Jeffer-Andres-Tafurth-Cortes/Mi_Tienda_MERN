@@ -15,7 +15,6 @@ function CreatePage() {
   // Se importa 'useToast' de Chakra UI para mostrar una notificacion cuando el producto se ha creado
   const toast = useToast()
 
-
   // Se usa el hook 'useProductStore' para interactuar con el store de productos
   const { createProduct } = useProductStore()
 
