@@ -1,13 +1,22 @@
-import { Button, Container, Flex, HStack, Text } from "@chakra-ui/react"
+import { Button, Container, Flex, HStack, Text, useColorMode } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import { PlusSquareIcon } from '@chakra-ui/icons'
 
+import { IoMoon } from 'react-icons/io5'
+import { LuSun } from 'react-icons/lu'
+
 // El componente 'Narbar' es la barra de busqueda de la aplicacion
 function Navbar() {
+
+  // Se utiliza el hook 'useColorMode' de Chakra UI para cambiar el theme de la aplicacion
+  const { colorMode, toggleColorMode } = useColorMode()
+
+  
+
   return (
 
     // Este contenedor va a definir la barra de busqueda
-    <Container maxWidth={'1140px'} paddingX={4}>
+    <Container maxWidth={'1140px'} paddingX={4} >
 
       <Flex height={16} alignItems={'center'} justifyContent={'space-between'} flexDirection={{ base: 'column', sm: 'row'}}>
 
@@ -30,7 +39,9 @@ function Navbar() {
           </Link>
 
           {/** La segunda opcion es para cambiar el theme de la aplicacion; es decir, modo claro o modo oscuro */}
-
+          <Button onClick={toggleColorMode}>
+            {colorMode === 'light' ? <IoMoon /> : <LuSun size='20' />}
+          </Button>
 
         </HStack>
 

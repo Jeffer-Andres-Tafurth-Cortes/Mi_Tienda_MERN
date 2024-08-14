@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react"
+import { Box, useColorModeValue } from "@chakra-ui/react"
 import { Route, Routes } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
@@ -11,7 +11,7 @@ function App() {
   return (
 
     // Este Box va a contener toda la parte visual de como estara formada nuestra aplicacion
-    <Box minHeight={'100vh'}>
+    <Box minHeight={'100vh'} backgroundColor={useColorModeValue('gray.100', 'gray.900')}>
 
       {/** Aqui estara la barra de busqueda para nuestra aplicacion */}
       <Navbar />
