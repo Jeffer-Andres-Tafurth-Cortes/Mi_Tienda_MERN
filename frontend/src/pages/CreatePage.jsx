@@ -37,7 +37,7 @@ function CreatePage() {
   return (
 
     // Este 'Container' se va a tratar de el formulario usado para agregar productos en la tienda online
-    <Container maxWidth={'container.sm'}>
+    <Container maxWidth={'container.sm'} marginTop={8}>
 
       {/** El 'VStack' nos dice que el estilo es de manera vertical */}
       <VStack spacing={8}>
